@@ -1,26 +1,31 @@
 ﻿"use strict";
 
-var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+(function () {
 
-connection.on("ReceiveMessage", function (user, message) {
-	var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-	var encodedMsg = user + " says " + msg;
+	var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
-	var li = document.createElement("li");
-	li.textContent = encodedMsg;
-	document.getElementById("mensagens").appendChild(li);
-});
+	connection.on("ReceiveMessage", function (user, message) {
+		var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+		var encodedMsg = user + " says " + msg;
 
-connection.start().catch(function (err) {
-	return console.error(err.toString());
-});
+		var li = document.createElement("li");
+		li.textContent = encodedMsg;
+		document.getElementById("mensagens").appendChild(li);
+	});
 
-document.getElementById("btn-enviar").addEventListener("click", function (event) {
-	var nome = document.getElementById("nome").value;
-	var mensagem = document.getElementById("mensagem").value;
-
-	connection.invoke("SendMessage", nome, mensagem).catch(function (err) {
+	connection.start().catch(function (err) {
 		return console.error(err.toString());
 	});
-	event.preventDefault();
-});
+
+	document.getElementById("btn-enviar").addEventListener("click", function (event) {
+		var nome = document.getElementById("nome").value;
+		var mensagem = document.getElementById("mensagem").value;
+
+		connection.invoke("SendMessage", nome, mensagem).catch(function (err) {
+			return console.error(err.toString());
+		});
+		event.preventDefault();
+	});
+
+
+})();

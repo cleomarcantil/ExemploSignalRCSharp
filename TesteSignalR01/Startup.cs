@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using TesteSignalR01.Hubs;
+using TesteSignalR01.Services;
 
 namespace TesteSignalR01
 {
@@ -19,6 +20,8 @@ namespace TesteSignalR01
 		{
 			services.AddMvc()
 				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+			services.AddHostedService<ClockHostedService>();
 
 			services.AddSignalR();
 		}
@@ -34,6 +37,7 @@ namespace TesteSignalR01
 			app.UseSignalR(route =>
 			{
 				route.MapHub<ChatHub>("/chathub");
+				route.MapHub<ClockHub>("/clockhub");
 			});
 
 			//app.Run(async (context) =>
