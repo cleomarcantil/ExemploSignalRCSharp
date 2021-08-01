@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TesteSignalR01.Hubs;
-using TesteSignalR01.Services;
+using ExemploSignalRCSharp.Hubs;
+using ExemploSignalRCSharp.Services;
 
-namespace TesteSignalR01
+namespace ExemploSignalRCSharp
 {
 	public class Startup
 	{

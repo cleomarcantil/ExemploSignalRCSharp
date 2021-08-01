@@ -6,9 +6,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TesteSignalR01.Hubs;
+using ExemploSignalRCSharp.Hubs;
 
-namespace TesteSignalR01.Services
+namespace ExemploSignalRCSharp.Services
 {
 	public class ClockHostedService : IHostedService, IDisposable
 	{

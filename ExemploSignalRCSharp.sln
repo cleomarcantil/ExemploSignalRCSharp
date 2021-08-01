@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31521.260
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteSignalR01", "TesteSignalR01\TesteSignalR01.csproj", "{361A830A-A07D-45D3-94A1-1E1F851B449A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExemploSignalRCSharp", "ExemploSignalRCSharp\ExemploSignalRCSharp.csproj", "{361A830A-A07D-45D3-94A1-1E1F851B449A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
