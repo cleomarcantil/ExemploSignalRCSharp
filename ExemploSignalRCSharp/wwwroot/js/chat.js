@@ -2,7 +2,10 @@
 
 (function () {
 
-	var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+	var connection = new signalR.HubConnectionBuilder()
+		.withUrl("/chatHub")
+		.withAutomaticReconnect()
+		.build();
 
 	connection.on("ReceiveMessage", function (user, message) {
 		var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

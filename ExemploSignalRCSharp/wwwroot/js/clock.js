@@ -2,7 +2,10 @@
 
 (function () {
 
-	var connection = new signalR.HubConnectionBuilder().withUrl("/clockHub").build();
+	var connection = new signalR.HubConnectionBuilder()
+		.withUrl("/clockHub")
+		.withAutomaticReconnect()
+		.build();
 
 	connection.start().catch(function (err) {
 		return console.error(err.toString());
