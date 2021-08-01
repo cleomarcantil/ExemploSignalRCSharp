@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace ExemploSignalRCSharp.Hubs
 {
-    public class ClockHub : Hub
+	public interface IClockHubClient
+	{
+		Task ReceiveTime(string value);
+	}
+
+    public class ClockHub : Hub<IClockHubClient>
     {
 
 		public override async Task OnConnectedAsync()

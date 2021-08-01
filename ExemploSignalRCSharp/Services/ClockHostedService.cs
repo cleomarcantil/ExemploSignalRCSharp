@@ -12,14 +12,15 @@ namespace ExemploSignalRCSharp.Services
 {
 	public class ClockHostedService : IHostedService, IDisposable
 	{
-		private readonly IHubContext<ClockHub> clockHubContext;
+		private readonly IHubContext<ClockHub, IClockHubClient> clockHubContext;
 		private Timer timer;
 
-		public ClockHostedService(IHubContext<ClockHub> clockHubContext)
+		public ClockHostedService(IHubContext<ClockHub, IClockHubClient> clockHubContext)
 		{
 			this.clockHubContext = clockHubContext;
-
 		}
+
+		public void Dispose() => timer?.Dispose();
 
 		public Task StartAsync(CancellationToken cancellationToken)
 		{
@@ -42,15 +43,8 @@ namespace ExemploSignalRCSharp.Services
 
 			Debug.WriteLine($"ClockHostedService.OnTimer: {time}");
 
-			await clockHubContext.Clients.All.SendAsync("ReceiveTime", time);
+			await clockHubContext.Clients.All.ReceiveTime(time);
 		}
-
-		public void Dispose()
-		{
-			timer?.Dispose();
-		}
-
-
 
 	}
 }
